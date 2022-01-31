@@ -1,0 +1,35 @@
+{
+    "name": "databasemodule/databasemodule",
+    "description": "A module to work with databases in PHP without rewrite of code.",
+    "type": "project",
+    "license": "MIT",
+    "readme": "./README.md",
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "keywords": [ "sql", "modules" ],
+    "authors": [
+        {
+            "name": "Cassiano Castro",
+            "email": "development.castro@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            ""             : "src/",
+            "Creational\\" : "src/creational/",
+            "DAO\\"        : "src/dao/",
+            "Tables\\"     : "src/tables/",
+            "Entities\\"   : "src/entities/",
+			"Helpers\\"    : "src/helpers/"
+        }
+    },
+	"config": {
+		"preferred-install": "dist",
+		"sort-packages": true,
+		"optimize-autoloader": false
+	},
+    "require": {
+		"php": ">=8.1.2"
+	}
+}
