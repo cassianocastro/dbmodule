@@ -11,17 +11,17 @@
         {
             "name": "Cassiano Castro",
             "email": "development.castro@gmail.com",
-            "role": "Developer"
+            "role": "Lead"
         }
     ],
-    "autoload-dev": {
+    "autoload": {
         "psr-4": {
-            ""             : "src/",
-            "Creational\\" : "src/creational/",
-            "DAO\\"        : "src/dao/",
-            "Tables\\"     : "src/tables/",
-            "Entities\\"   : "src/entities/",
-			"Helpers\\"    : "src/helpers/"
+            "App\\": "src/app/"
+        }
+    },
+	"autoload-dev": {
+        "psr-4": {
+            "Tests\\": "src/tests/"
         }
     },
 	"config": {
