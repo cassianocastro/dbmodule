@@ -14,6 +14,7 @@ abstract class AbstractTable
 
 	protected const TABLENAME = "";
 	protected const COLUMNS   = [];
+
 	protected Service $service;
 
 	public function __construct(Service $service)
@@ -34,6 +35,7 @@ abstract class AbstractTable
 	public function getAll(): iterable
 	{
 		$sql = (new Factory())->createSelect($this);
+
 		$sql->appendOrderByClause(["nome"]);
 
         return $this->service->fetch($sql, null);
@@ -42,6 +44,7 @@ abstract class AbstractTable
     public function findByName(string $name): iterable
     {
         $sql = (new Factory())->createSelect($this);
+
 		$sql->appendWhereClause(condition: "nome = ?");
 
         return $this->service->fetch($sql, [ $name ]);

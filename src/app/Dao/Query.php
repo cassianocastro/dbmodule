@@ -39,6 +39,7 @@ final class Query implements ReturnableQuery
     public function appendOrderByClause(array $list, Order $order = Order::ASC): void
     {
         $list = implode(", ", $list);
+
         $this->template .= " ORDER BY $list {$order->getOrientation()}";
     }
 }

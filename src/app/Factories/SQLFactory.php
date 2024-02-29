@@ -15,7 +15,9 @@ final class SQLFactory
 	public function createInsert(AbstractTable $table, array $values): Query
 	{
 		$columns = $table->getColumns();
+
 		array_shift($columns);
+
 		$columns = implode(", ", $columns);
 		$values  = implode(", ", $values);
 
@@ -32,11 +34,14 @@ final class SQLFactory
 	public function createUpdate(AbstractTable $table, string $condition): Query
 	{
 		$kvList = $table->getColumns();
-		array_shift($kvList);
 
-		for ($i = 0, $size = count($kvList); $i < $size; $i++) {
+        array_shift($kvList);
+
+		for ( $i = 0, $size = count($kvList); $i < $size; ++$i )
+        {
 			$kvList[$i] .= " = ?";
 		}
+
 		$kvList = implode(", ", $kvList);
 
 		return new Query("UPDATE {$table->getName()} SET $kvList WHERE $condition");

@@ -20,36 +20,43 @@ final class DBService
 
     public function execute(Query $query, array $params): void
     {
-		try {
+		try
+        {
 			$statement = $this->pdo->prepare($query->__toString());
 
-			for ($i = 1, $size = count($params); $i <= $size; $i++)
+			for ( $i = 1, $size = count($params); $i <= $size; ++$i )
             {
 				$statement->bindValue($i, $params[$i - 1]);
 			}
 
 			$statement->execute();
-		} catch (Exception $e) {
+		}
+        catch ( Exception $e )
+        {
 			die($e->getMessage());
 		}
     }
 
 	public function fetch(Query $query, ?array $params): iterable
 	{
-		try {
+		try
+        {
 			$statement = $this->pdo->prepare($query->__toString());
 
 			if ( ! is_null($params) )
             {
-				for ($i = 1, $size = count($params); $i <= $size; $i++)
+				for ( $i = 1, $size = count($params); $i <= $size; ++$i )
                 {
 					$statement->bindValue($i, $params[$i - 1]);
 				}
 			}
+
 			$statement->execute();
 
 			return $statement->fetchAll();
-		} catch (Exception $e) {
+		}
+        catch ( Exception $e )
+        {
 			die($e->getMessage());
 		}
 	}

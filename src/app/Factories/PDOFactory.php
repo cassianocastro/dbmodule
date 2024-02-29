@@ -14,7 +14,8 @@ final class PDOFactory
 
     public function createPDOfrom(DBConfig $config): PDO
     {
-        try {
+        try
+        {
             return new PDO(
                 $config->getDSN(),
                 $config->getUser(),
@@ -23,7 +24,9 @@ final class PDOFactory
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 ]
             );
-        } catch (PDOException $e) {
+        }
+        catch ( PDOException $e )
+        {
             die($e->getMessage());
         }
     }

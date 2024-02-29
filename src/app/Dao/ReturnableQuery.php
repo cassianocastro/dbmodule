@@ -10,5 +10,4 @@ interface ReturnableQuery
 {
 
     public function appendReturningClause(): void;
-
 }
