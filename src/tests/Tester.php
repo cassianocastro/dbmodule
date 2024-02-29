@@ -26,9 +26,7 @@ final class Tester
      */
     public function canInsertUser(): void
     {
-		self::getUserTable()->insert(
-            new User(0, "Test3", "30")
-        );
+		self::getUserTable()->insert(new User(0, "Test3", "30"));
     }
 
     /**
@@ -36,9 +34,7 @@ final class Tester
      */
     public function canUpdateUser(): void
     {
-		self::getUserTable()->update(
-            new User(17, "Mariele", "35")
-        );
+		self::getUserTable()->update(new User(17, "Mariele", "35"));
     }
 
     /**
@@ -46,9 +42,7 @@ final class Tester
      */
     public function canDeleteUser(): void
     {
-		self::getUserTable()->delete(
-            new User(21, "", "")
-        );
+		self::getUserTable()->delete(new User(21, "", ""));
     }
 
     /**
