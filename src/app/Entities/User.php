@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Entities;
+namespace App\Entities;
 
 /**
  *
@@ -13,7 +13,7 @@ final class User
 	private string $name;
     private string $password;
 
-    public function __construct(string $name, string $password, int $id = 0)
+    public function __construct(int $id, string $name, string $password)
     {
 		$this->id       = $id;
         $this->name     = $name;

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace DAO;
+namespace App\Dao;
 
 use PDO, Exception;
 
@@ -18,34 +18,37 @@ final class DBService
         $this->pdo = $pdo;
     }
 
-    public function execute(Query $query, array $params): bool
+    public function execute(Query $query, array $params): void
     {
 		try {
 			$statement = $this->pdo->prepare($query->__toString());
 
-			for ($i = 1, $size = count($params); $i <= $size; $i++) {
+			for ($i = 1, $size = count($params); $i <= $size; $i++)
+            {
 				$statement->bindValue($i, $params[$i - 1]);
 			}
 
-			return $statement->execute();
+			$statement->execute();
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}
     }
 
-	public function fetch(Query $query, ?array $params): array
+	public function fetch(Query $query, ?array $params): iterable
 	{
 		try {
 			$statement = $this->pdo->prepare($query->__toString());
 
-			if ( ! is_null($params) ) {
-				for ($i = 1, $size = count($params); $i <= $size; $i++) {
+			if ( ! is_null($params) )
+            {
+				for ($i = 1, $size = count($params); $i <= $size; $i++)
+                {
 					$statement->bindValue($i, $params[$i - 1]);
 				}
 			}
 			$statement->execute();
 
-			return $statement->fetchAll(PDO::FETCH_ASSOC);
+			return $statement->fetchAll();
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

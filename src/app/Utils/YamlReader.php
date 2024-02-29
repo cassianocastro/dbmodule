@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Helpers;
+namespace App\Utils;
 
 /**
  *
@@ -13,6 +13,6 @@ final class YamlReader
     {
         $content = yaml_parse_file($path);
 
-		return $content["dbconfig"];
+		return $content;
     }
 }

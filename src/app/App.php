@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Creational;
+namespace App;
 
 use PDO;
-use Helpers\{ DatabaseConfig, YamlReader };
+use App\Factories\PDOFactory;
+use App\Utils\{ DBConfig, YamlReader };
 
 /**
  *
@@ -16,6 +17,6 @@ final class App
 	{
 		$data = (new YamlReader())->getData(__DIR__ . "/../../.config.yml");
 
-		return (new PDOFactory())->createPDOfrom(new DatabaseConfig(...$data));
+		return (new PDOFactory())->createPDOfrom(new DBConfig(...$data["dbconfig"]));
 	}
 }

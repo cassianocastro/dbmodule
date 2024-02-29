@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Creational;
+namespace App\Factories;
 
 use PDO, PDOException;
-use Helpers\DatabaseConfig;
+use App\Utils\DBConfig;
 
 /**
  *
@@ -12,13 +12,16 @@ use Helpers\DatabaseConfig;
 final class PDOFactory
 {
 
-    public function createPDOfrom(DatabaseConfig $config): PDO
+    public function createPDOfrom(DBConfig $config): PDO
     {
         try {
             return new PDO(
                 $config->getDSN(),
                 $config->getUser(),
-                $config->getPassword()
+                $config->getPassword(),
+                [
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
             );
         } catch (PDOException $e) {
             die($e->getMessage());

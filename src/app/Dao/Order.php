@@ -1,8 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace DAO;
+namespace App\Dao;
 
+/**
+ *
+ */
 enum Order: string
 {
     case ASC = "ASC";
